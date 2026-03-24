@@ -1,0 +1,53 @@
+# Python
+
+**pycache**/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+
+venv/
+.env/
+.env.*
+.venv/
+
+# Streamlit
+
+.streamlit/
+
+# Logs
+
+*.log
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# IDE
+
+.vscode/
+.idea/
+
+# Python build
+
+build/
+dist/
+*.egg-info/
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+# Cache
+
+.cache/
+
+# Environment variables
+
+.env
+
+# Ollama (optional large files)
+
+*.gguf

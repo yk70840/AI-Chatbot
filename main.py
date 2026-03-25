@@ -22,9 +22,32 @@ if "history" not in st.session_state:
 if "tokens" not in st.session_state:
     st.session_state.tokens = {"total": 0, "input": 0, "output": 0}
 
+if "system_prompt" not in st.session_state:
+    st.session_state.system_prompt = "You are a helpful AI assistant"
+
 # ------------------ Sidebar ------------------
 with st.sidebar:
     st.title("⚙️ Controls")
+    # --- System prompt editor ---
+    st.markdown("### 🧠 System Prompt")
+
+    system_prompt = st.text_area(
+        "Define AI behavior",
+        value=st.session_state.system_prompt,
+        height=120,
+    )
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("Apply prompt"):
+            st.session_state.system_prompt = system_prompt
+    with col2:
+        if st.button("Reset Prompt"):
+            st.session_state.system_prompt = "You are a helpful AI assistant."
+            st.rerun()
+
+    st.divider()
 
     # --- Chat Controls ---
     st.markdown("### 💬 Chat")
@@ -80,7 +103,7 @@ with st.sidebar:
 def load_model():
     prompt_template = ChatPromptTemplate(
         [
-            ("system", "You are a helpful AI assistant."),
+            ("system", "{system_prompt}"),
             MessagesPlaceholder(variable_name="history"),
             ("human", "{input}"),
         ]
@@ -107,7 +130,11 @@ def call_llm_stream(text: str) -> tuple[str, float, int]:
         trimmed_history = trim_history(st.session_state.history)
 
         for chunk in llm_chain.stream(
-            {"input": text, "history": format_history_for_llm(trimmed_history)}
+            {
+                "system_prompt": st.session_state.system_prompt,
+                "input": text,
+                "history": format_history_for_llm(trimmed_history),
+            }
         ):
             if chunk.content:
                 full_response += chunk.content  # type:ignore

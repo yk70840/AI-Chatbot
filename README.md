@@ -123,10 +123,10 @@ If the model doesn't return usage metadata, it estimates tokens using word count
 
 ## 🔮 Future Improvements
 
-* 🔴 Streaming responses (token-by-token output)
-* 🧠 Memory summarization (long chat handling)
-* 📂 Save/load conversations
-* 🎯 Prompt customization UI
+* 🔴 Streaming responses (token-by-token output) (done)
+* 🧠 Memory summarization (long chat handling) (done)
+* 📂 Save/load conversations (done)
+* 🎯 Prompt customization UI (done)
 * 🌐 Deployment (Streamlit Cloud / Docker)
 
 ---

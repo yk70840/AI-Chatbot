@@ -12,6 +12,9 @@ venv/
 .env.*
 .venv/
 
+# files
+test.py
+
 # Streamlit
 
 .streamlit/

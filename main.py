@@ -108,8 +108,8 @@ def load_model():
             ("human", "{input}"),
         ]
     )
-    llm = ChatOllama(model="gemma3:1b", num_gpu=0)  # type:ignore
-
+    llm = ChatOllama(model="gemma3:1b")  # type:ignore
+    print("using ollama model: gemma3:1b")
     return prompt_template | llm
 
 

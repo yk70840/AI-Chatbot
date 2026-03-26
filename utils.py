@@ -48,7 +48,7 @@ def trim_history(history: list[dict]) -> list[dict]:
 
 # ------------------ save_session ------------------
 def save_session(history: list[dict], tokens: dict) -> str:
-    print("save session called")
+    # print("save session called")
 
     return json.dumps(
         {"history": history, "tokens_used": tokens}, indent=2, ensure_ascii=False
